@@ -1,5 +1,5 @@
 Strategy,Position,Trade Price,Trade Time,Eval Time,Status
-N5ST2,-105,,,,
+N5ST2,105,43476.5,2023-11-03 09:25:12.807890,2023-11-03 09:25:12.807890,1.0
 N15SMA1,-105,,,,
 N15SMA2,105,,,,
 N15SMA3,105,,,,
