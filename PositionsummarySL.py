@@ -27,30 +27,32 @@ df_position=pd.concat([df_position,df_position_1])
 #df_position=df_position[cols]
 
 add_selectbox = st.sidebar.selectbox(
-    'Position in timeframe?',
-    ('5 min', '15 min', '30 min','60 min','Daily','5Paisa','Total')
+    'Position in Account?',
+    ('HUF', 'Samrup', 'Star','Galaxy','Neptune','Galaxy-5P','Neptune-5P','Total')
 )
-if add_selectbox=='5 min':
+if add_selectbox=='HUF':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:2]== 'N5']
-elif add_selectbox=='15 min':
+    df_filter=df_position[df_position['Strategy'].str[-1]== 'H']
+elif add_selectbox=='Samrup':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:3]== 'N15'] 
-elif add_selectbox=='30 min':
+    df_filter=df_position[df_position['Strategy'].str[-1]== 'S'] 
+elif add_selectbox=='Star':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:3]== 'N30']
-elif add_selectbox=='60 min':
+    df_filter=df_position[df_position['Strategy'].str[-1]== 'M']
+elif add_selectbox=='Galaxy':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:3]== 'N60']
-elif add_selectbox=='Daily':
+    df_filter=df_position[(df_position['Strategy'].str[-1]== 'G') & (df_position['Strategy'].str[0]=='N')]
+elif add_selectbox=='Neptune':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:2]== 'ND']
-elif add_selectbox=='5Paisa':
+    df_filter=df_position[(df_position['Strategy'].str[0]== 'N') & (df_position['Strategy'].str[-1]=='N')]
+elif add_selectbox=='Galaxy-5P':
     st.write(add_selectbox)
-    df_filter=df_position[df_position['Strategy'].str[0:2]== 'P5']
-   
+    df_filter=df_position[(df_position['Strategy'].str[0:2]== 'P5') & (df_position['Strategy'].str[-1]=='G')]
+elif add_selectbox=='Neptune-5P':
+    st.write(add_selectbox)
+    df_filter=df_position[(df_position['Strategy'].str[0:2]== 'P5') & (df_position['Strategy'].str[-1]=='N')]   
 elif add_selectbox=='Total':
-    df_filter=df_position[df_position['Strategy'].str[0]!='F']
+    df_filter=df_position.copy()
 total_position=df_filter['Position'].sum()
 
 st.write('Total Bank Nifty Position Size is '+str(total_position))
