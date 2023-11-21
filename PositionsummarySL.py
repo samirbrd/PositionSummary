@@ -59,6 +59,7 @@ st.write('Total Bank Nifty Position Size is '+str(total_position))
 st.write(df_filter)
 df_position_summary=pd.read_csv(file_string_2)
 total_m2m=df_position_summary['M2M'].sum()
+total_margin_available=df_positio
 st.write(df_position_summary)
 st.write('Total M2M for day:'+str(total_m2m))
 
